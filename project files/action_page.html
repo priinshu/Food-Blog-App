@@ -1,0 +1,29 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["Name"];
+    $people = $_POST["People"];
+    $dateTime = $_POST["date"];
+    $message = $_POST["Message"];
+
+    // Create a string with the form data
+    $formData = "Name: " . $name . "\n";
+    $formData .= "Number of People: " . $people . "\n";
+    $formData .= "Date and Time: " . $dateTime . "\n";
+    $formData .= "Message: " . $message . "\n\n";
+
+    // Open a text file in append mode and save the form data
+    $file = fopen("form_data.txt", "a");
+    fwrite($file, $formData);
+    fclose($file);
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submission Successful</title>
+</head>
+<body>
+    <h1>Thank You for Your Submission!</h1>
+    <p>Your form data has been saved successfully.</p>
+</body>
+</html>
